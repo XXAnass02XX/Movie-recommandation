@@ -1,7 +1,7 @@
 from collections import deque
 
 class Person:
-    def __init__(self, full_name):
+    def __init__(self, full_name = 'user X'):
         self.full_name = full_name
         self.watched_movies = None
         self.user_profile = None
