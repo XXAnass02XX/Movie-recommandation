@@ -26,8 +26,6 @@ User1 = st.session_state.User1
 
 st.title("Movie Recommendation System")
 
-#st.write(df_dataSet['title'])
-
 st.info("Please give us a movie name that you have watched:")
 user_input_name = st.text_input("Start typing the movie's name ,e.g : if you want to look for inception just write inc and click enter")
 
@@ -39,7 +37,9 @@ user_input_rating = st.text_input("type the rating , from -10 to 10 , -10 you ha
 
 if st.button("Add movie and rating"):
     if not selected_movie or not user_input_rating :
-        st.warning("Please make sure to select a movie and give us a rating")
+        st.error("Please make sure to select a movie and give us a rating")
+    elif float(user_input_rating) > 10 or float(user_input_rating) < -10 : 
+        st.error("Please make sure that the rating is between -10 and 10")
     else :
         User1.add_movie(selected_movie,float(user_input_rating),df_dataSet)
         st.success("Your movie has been added")
